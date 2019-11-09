@@ -1,0 +1,32 @@
+{
+	"name": "bug-rollup-plugin-node-resolve",
+	"version": "1.0.0",
+	"description": "1. figure this out later",
+	"main": "index.js",
+	"scripts": {
+		"start": "gulp rollup",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Dan503/BUG-rollup-plugin-node-resolve.git"
+	},
+	"author": "Daniel Tonon",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Dan503/BUG-rollup-plugin-node-resolve/issues"
+	},
+	"homepage": "https://github.com/Dan503/BUG-rollup-plugin-node-resolve#readme",
+	"devDependencies": {
+		"gulp": "^4.0.2",
+		"gulp-sourcemaps": "^2.6.5",
+		"rollup": "^1.26.3",
+		"rollup-plugin-node-resolve": "^5.2.0",
+		"rollup-stream": "^1.24.1",
+		"vinyl-buffer": "^1.0.1",
+		"vinyl-source-stream": "^2.0.0"
+	},
+	"dependencies": {
+		"switch-function": "^1.2.0"
+	}
+}
