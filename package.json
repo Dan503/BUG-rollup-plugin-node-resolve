@@ -2,7 +2,7 @@
 	"name": "bug-rollup-plugin-node-resolve",
 	"version": "1.0.0",
 	"description": "1. figure this out later",
-	"main": "index.js",
+	"main": "src/main.js",
 	"scripts": {
 		"start": "gulp rollup",
 		"test": "echo \"Error: no test specified\" && exit 1"
