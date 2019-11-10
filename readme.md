@@ -1,4 +1,4 @@
-# rollup-plugin-node-resolve bug
+# rollup-plugin-commonjs bug
 
 ## Reproduction steps
 
