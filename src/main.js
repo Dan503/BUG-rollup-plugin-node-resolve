@@ -1,6 +1,3 @@
-var Switch = require('switch-function')
+var hello = require('./example-import')
 
-Switch('value', {
-	value: () => console.log('value'),
-	default: () => console.log('default'),
-})
+hello()

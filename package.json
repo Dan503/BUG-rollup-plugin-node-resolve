@@ -21,6 +21,7 @@
 		"gulp": "^4.0.2",
 		"gulp-sourcemaps": "^2.6.5",
 		"rollup": "^1.26.3",
+		"rollup-plugin-commonjs": "^10.1.0",
 		"rollup-plugin-node-resolve": "^5.2.0",
 		"rollup-stream": "^1.24.1",
 		"vinyl-buffer": "^1.0.1",
