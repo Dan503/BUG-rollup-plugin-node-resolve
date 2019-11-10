@@ -1,3 +1,7 @@
+var hello = require('./example-import')
+
+hello()
+
 var Switch = require('switch-function')
 
 Switch('value', {

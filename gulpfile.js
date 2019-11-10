@@ -5,6 +5,7 @@ const buffer = require('vinyl-buffer')
 const sourcemaps = require('gulp-sourcemaps')
 
 const resolve = require('rollup-plugin-node-resolve')
+const CommonJS = require('rollup-plugin-commonjs')
 
 const rollupJS = (inputFile, options) => {
 	return () => {
@@ -13,7 +14,7 @@ const rollupJS = (inputFile, options) => {
 				input: options.basePath + inputFile,
 				format: options.format,
 				sourcemap: options.sourcemap,
-				plugins: [resolve()],
+				plugins: [resolve(), CommonJS()],
 			})
 				// point to the entry file.
 				.pipe(source(inputFile, options.basePath))
