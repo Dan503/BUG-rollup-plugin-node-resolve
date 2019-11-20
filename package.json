@@ -21,13 +21,13 @@
 		"gulp": "^4.0.2",
 		"gulp-sourcemaps": "^2.6.5",
 		"rollup": "^1.27.2",
-		"rollup-plugin-commonjs": "^10.1.0",
-		"rollup-plugin-node-resolve": "^5.2.0",
 		"rollup-stream": "^1.24.1",
 		"vinyl-buffer": "^1.0.1",
 		"vinyl-source-stream": "^2.0.0"
 	},
 	"dependencies": {
+		"rollup-plugin-commonjs": "^10.1.0",
+		"rollup-plugin-node-resolve": "^5.2.0",
 		"switch-function": "^1.2.0"
 	}
 }
