@@ -5,7 +5,7 @@ export default {
 	input: 'src/main.js',
 	output: {
 		format: 'iife',
-		file: 'dist/main.js',
+		file: 'output/main.js',
 		sourcemap: true,
 	},
 	plugins: [CommonJS(), NodeResolve()],
