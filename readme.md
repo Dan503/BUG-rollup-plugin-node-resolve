@@ -1,31 +1,59 @@
-# rollup-plugin-node-resolve bug
+# Solution for node-resolve and commonjs not working in Gulp
 
-## Reproduction steps
+This repository is an example of how to get `@rollup/plugin-commonjs` and `@rollup/plugin-node-resolve` working in Gulp.
 
-1. Clone this repository
+## What is the problem?
+
+See [TypeError: Cannot read property 'resolve' of undefined](https://github.com/rollup/plugins/issues/103) and [Error: Could not load [object Object]](https://github.com/rollup/plugins/issues/68) GitHub issues.
+
+The core of the problem is that [Rollup Stream](https://www.npmjs.com/package/rollup-stream) is used to integrate Rollup with Gulp however it is not being maintained anymore though.
+
+New versions of rollup plugins do not work with the Rollup Stream.
+
+## Steps to working around the issue
+
+The key is to use Gulp only as a means to start up Rollup and use rollup to do all the code modifications
+
+1. Create a `rollup.config.js` file in the root folder of your project. Something like the following:
+
+```js
+const CommonJS = require('@rollup/plugin-commonjs')
+const NodeResolve = require('@rollup/plugin-node-resolve')
+
+export default {
+	input: 'input/main.js',
+	output: {
+		format: 'iife',
+		file: 'output/main.js',
+		sourcemap: true,
+	},
+	plugins: [CommonJS(), NodeResolve()],
+}
+```
+
+2. npm install the latest versions of gulp, rollup, the CommonJS plugin and the NodeResolve plugin
 
 ```
-git clone https://github.com/Dan503/BUG-rollup-plugin-node-resolve.git
+npm i -D gulp rollup @rollup/plugin-commonjs @rollup/plugin-node-resolve
 ```
 
-2. `npm i`
-3. `npm run start`
-4. See error in console:
+3. Create a gulp task that looks like this: ("child_process" is native to node and does not need npm installing)
 
+```js
+const gulp = require('gulp')
+const { exec } = require('child_process')
+
+gulp.task('rollup', done => {
+	// "npx rollup -c" is the equivalent of a command you would write directly into a terminal window
+	exec('npx rollup -c', (error, stdout, logInfo) => {
+		console.log(logInfo)
+		done(error)
+	})
+})
 ```
-Error: Could not load [object Object]: The "path" argument must be one of type string, Buffer, or URL. Received type object
-    at C:\xxx\Bug-recreations\rollup-plugin-node-resolve\node_modules\rollup-stream\node_modules\rollup\dist\rollup.js:9715:11
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-```
 
-## More details
+4. Run `npx gulp rollup` to compile the code.
 
-I followed the guide outlined here on how to make Rollup work in Gulp:
+Make sure to do any modifications to the output through either the `rollup.config.js` file or by passing parameters into the string passed into the `exec()` function call.
 
-https://duske.me/using-rollup-js-with-gulp-js/
-
-Then I tried following the documentation as outlined here to add node-resolve support:
-
-https://github.com/rollup/rollup-plugin-node-resolve
-
-I don't understand why it is not working.
+Do not do any `.pipe()` calls or anything like that to the `exec()` function as it is not a stream.
