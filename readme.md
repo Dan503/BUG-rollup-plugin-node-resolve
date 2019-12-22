@@ -6,13 +6,13 @@ This repository is an example of how to get `@rollup/plugin-commonjs` and `@roll
 
 See [TypeError: Cannot read property 'resolve' of undefined](https://github.com/rollup/plugins/issues/103) and [Error: Could not load [object Object]](https://github.com/rollup/plugins/issues/68) GitHub issues.
 
-The core of the problem is that [Rollup Stream](https://www.npmjs.com/package/rollup-stream) is used to integrate Rollup with Gulp however it is not being maintained anymore though.
+The core of the problem is that [Rollup Stream](https://www.npmjs.com/package/rollup-stream) is used to integrate Rollup with Gulp, however it is not being maintained anymore.
 
-New versions of rollup plugins do not work with the Rollup Stream.
+New versions of rollup plugins do not work with Rollup Stream.
 
 ## Steps to working around the issue
 
-The key is to use Gulp only as a means to start up Rollup and use rollup to do all the code modifications
+The key to working around this issue is to use Gulp only as a means to start Rollup. Use Rollup to do all of the code transformations.
 
 1. Create a `rollup.config.js` file in the root folder of your project. Something like the following:
 
